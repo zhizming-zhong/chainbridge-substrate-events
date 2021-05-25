@@ -21,7 +21,9 @@ type ChainBridgeEvents struct {
 }
 
 type BridgeTransferEvents struct {
-	BridgeTransfer_ProposalFailed []EventProposalFailed //nolint:stylecheck,golint
+	BridgeTransfer_LotteryNewRound []EventLotteryNewRound //nolint:stylecheck,golint
+	BridgeTransfer_LotteryOpenBox  []EventLotteryOpenBox  //nolint:stylecheck,golint
+	BridgeTransfer_BTCSignedTxSend []EventBTCSignedTxSend //nolint:stylecheck,golint
 }
 
 type PhalaEvents struct {
@@ -144,7 +146,6 @@ type EventProposalSucceeded struct {
 	Topics       []types.Hash
 }
 
-// pallet bridge-transfer
 type EventProposalFailed struct {
 	Phase        types.Phase
 	SourceId     types.U8
@@ -152,10 +153,29 @@ type EventProposalFailed struct {
 	Topics       []types.Hash
 }
 
-type EventBridgeTransferRemark struct {
-	Phase  types.Phase
-	Hash   types.Hash
-	Topics []types.Hash
+// pallet bridge-transfer
+type EventLotteryNewRound struct {
+	Phase       types.Phase
+	RoundID     types.U32
+	TotalCount  types.U32
+	WinnerCount types.U32
+	Topics      []types.Hash
+}
+
+type EventLotteryOpenBox struct {
+	Phase      types.Phase
+	RoundID    types.U32
+	TokenId    types.U32
+	BtcAddress types.Bytes
+	Topics     []types.Hash
+}
+
+type EventBTCSignedTxSend struct {
+	Phase      types.Phase
+	ChainId    types.U8
+	ResourceId types.Bytes32
+	Payload    types.Bytes
+	Topics     []types.Hash
 }
 
 // pallet phala
@@ -292,7 +312,7 @@ type EventPayoutReward struct {
 	Arg0   types.AccountID
 	Arg1   types.U128
 	Arg2   types.U128
-	Arg3   types.U8
+	Arg3   PayoutReason
 	Topics []types.Hash
 }
 
