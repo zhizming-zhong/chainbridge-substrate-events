@@ -54,6 +54,14 @@ type MiningStakingEvents struct {
 	MiningStaking_PendingStakeAdded   []EventPendingStakeAdded   //nolint:stylecheck,golint
 }
 
+type KittiesEvents struct {
+	KittyStorage_Created         []EventKittiesCreated         //nolint:stylecheck,golint
+	KittyStorage_Transferred     []EventKittiesTransferred     //nolint:stylecheck,golint
+	KittyStorage_TransferToChain []EventKittiesTransferToChain //nolint:stylecheck,golint
+	KittyStorage_NewLottery      []EventKittiesNewLottery      //nolint:stylecheck,golint
+	KittyStorage_Open            []EventKittiesOpen            //nolint:stylecheck,golint
+}
+
 // pallet chain-bridge
 type EventFungibleTransfer struct {
 	Phase        types.Phase
@@ -172,9 +180,11 @@ type EventLotteryOpenBox struct {
 
 type EventBTCSignedTxSend struct {
 	Phase      types.Phase
+	RoundId    types.U32
 	ChainId    types.U8
 	ResourceId types.Bytes32
 	Payload    types.Bytes
+	Sequence   types.U64
 	Topics     []types.Hash
 }
 
@@ -335,6 +345,44 @@ type EventPendingStakeAdded struct {
 	Arg0   types.AccountID
 	Arg1   types.AccountID
 	Arg2   types.U128
+	Topics []types.Hash
+}
+
+type EventKittiesCreated struct {
+	Phase  types.Phase
+	Arg0   types.AccountID
+	Arg1   types.Hash
+	Topics []types.Hash
+}
+
+type EventKittiesTransferred struct {
+	Phase  types.Phase
+	Arg0   types.AccountID
+	Arg1   types.AccountID
+	Arg2   types.Hash
+	Topics []types.Hash
+}
+
+type EventKittiesTransferToChain struct {
+	Phase  types.Phase
+	Arg0   types.AccountID
+	Arg1   types.Hash
+	Arg2   types.U64
+	Topics []types.Hash
+}
+
+type EventKittiesNewLottery struct {
+	Phase  types.Phase
+	Arg0   types.U32
+	Arg1   types.U32
+	Topics []types.Hash
+}
+
+type EventKittiesOpen struct {
+	Phase  types.Phase
+	Arg0   types.U32
+	Arg1   types.Hash
+	Arg2   types.Hash
 	Topics []types.Hash
 }
 
