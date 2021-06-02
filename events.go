@@ -178,14 +178,6 @@ type EventLotteryOpenBox struct {
 	Topics     []types.Hash
 }
 
-type EventBTCSignedTxSend struct {
-	Phase    types.Phase
-	ChainId  types.U8
-	Payload  types.Bytes
-	Sequence types.U64
-	Topics   []types.Hash
-}
-
 // pallet phala
 type EventCommandPushed struct {
 	Phase  types.Phase
@@ -346,6 +338,7 @@ type EventPendingStakeAdded struct {
 	Topics []types.Hash
 }
 
+// pallet-kitties
 type EventKittiesCreated struct {
 	Phase  types.Phase
 	Arg0   types.AccountID
