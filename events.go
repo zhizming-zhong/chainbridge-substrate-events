@@ -23,7 +23,6 @@ type ChainBridgeEvents struct {
 type BridgeTransferEvents struct {
 	BridgeTransfer_LotteryNewRound []EventLotteryNewRound //nolint:stylecheck,golint
 	BridgeTransfer_LotteryOpenBox  []EventLotteryOpenBox  //nolint:stylecheck,golint
-	BridgeTransfer_BTCSignedTxSend []EventBTCSignedTxSend //nolint:stylecheck,golint
 }
 
 type PhalaEvents struct {
