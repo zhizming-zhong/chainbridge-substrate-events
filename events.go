@@ -179,13 +179,11 @@ type EventLotteryOpenBox struct {
 }
 
 type EventBTCSignedTxSend struct {
-	Phase      types.Phase
-	RoundId    types.U32
-	ChainId    types.U8
-	ResourceId types.Bytes32
-	Payload    types.Bytes
-	Sequence   types.U64
-	Topics     []types.Hash
+	Phase    types.Phase
+	ChainId  types.U8
+	Payload  types.Bytes
+	Sequence types.U64
+	Topics   []types.Hash
 }
 
 // pallet phala
