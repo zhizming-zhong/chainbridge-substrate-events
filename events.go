@@ -26,25 +26,26 @@ type BridgeTransferEvents struct {
 }
 
 type PhalaEvents struct {
-	Phala_CommandPushed         []EventCommandPushed         //nolint:stylecheck,golint
-	Phala_TransferToTee         []EventTransferToTee         //nolint:stylecheck,golint
-	Phala_TransferToChain       []EventTransferToChain       //nolint:stylecheck,golint
-	Phala_WorkerRegistered      []EventWorkerRegistered      //nolint:stylecheck,golint
-	Phala_WorkerUnregistered    []EventWorkerUnregistered    //nolint:stylecheck,golint
-	Phala_Heartbeat             []EventHeartbeat             //nolint:stylecheck,golint
-	Phala_Offline               []EventOffline               //nolint:stylecheck,golint
-	Phala_Slash                 []EventSlash                 //nolint:stylecheck,golint
-	Phala_WorkerStateUpdated    []EventWorkerStateUpdated    //nolint:stylecheck,golint
-	Phala_WhitelistAdded        []EventWhitelistAdded        //nolint:stylecheck,golint
-	Phala_WhitelistRemoved      []EventWhitelistRemoved      //nolint:stylecheck,golint
-	Phala_RewardSeed            []EventRewardSeed            //nolint:stylecheck,golint
-	Phala_WorkerMessageReceived []EventWorkerMessageReceived //nolint:stylecheck,golint
-	Phala_MinerStarted          []EventMinerStarted          //nolint:stylecheck,golint
-	Phala_MinerStopped          []EventMinerStopped          //nolint:stylecheck,golint
-	Phala_NewMiningRound        []EventNewMiningRound        //nolint:stylecheck,golint
-	Phala_PayoutMissed          []EventPayoutMissed          //nolint:stylecheck,golint
-	Phala_WorkerReset           []EventWorkerReset           //nolint:stylecheck,golint
-	Phala_PayoutReward          []EventPayoutReward          //nolint:stylecheck,golint
+	Phala_CommandPushed          []EventCommandPushed          //nolint:stylecheck,golint
+	Phala_TransferToTee          []EventTransferToTee          //nolint:stylecheck,golint
+	Phala_TransferToChain        []EventTransferToChain        //nolint:stylecheck,golint
+	Phala_WorkerRegistered       []EventWorkerRegistered       //nolint:stylecheck,golint
+	Phala_WorkerUnregistered     []EventWorkerUnregistered     //nolint:stylecheck,golint
+	Phala_Heartbeat              []EventHeartbeat              //nolint:stylecheck,golint
+	Phala_Offline                []EventOffline                //nolint:stylecheck,golint
+	Phala_Slash                  []EventSlash                  //nolint:stylecheck,golint
+	Phala_WorkerStateUpdated     []EventWorkerStateUpdated     //nolint:stylecheck,golint
+	Phala_WhitelistAdded         []EventWhitelistAdded         //nolint:stylecheck,golint
+	Phala_WhitelistRemoved       []EventWhitelistRemoved       //nolint:stylecheck,golint
+	Phala_RewardSeed             []EventRewardSeed             //nolint:stylecheck,golint
+	Phala_WorkerMessageReceived  []EventWorkerMessageReceived  //nolint:stylecheck,golint
+	Phala_MinerStarted           []EventMinerStarted           //nolint:stylecheck,golint
+	Phala_MinerStopped           []EventMinerStopped           //nolint:stylecheck,golint
+	Phala_NewMiningRound         []EventNewMiningRound         //nolint:stylecheck,golint
+	Phala_PayoutMissed           []EventPayoutMissed           //nolint:stylecheck,golint
+	Phala_WorkerReset            []EventWorkerReset            //nolint:stylecheck,golint
+	Phala_PayoutReward           []EventPayoutReward           //nolint:stylecheck,golint
+	Phala_LotteryMessageReceived []EventLotteryMessageReceived //nolint:stylecheck,golint
 }
 
 type MiningStakingEvents struct {
@@ -313,6 +314,12 @@ type EventPayoutReward struct {
 	Arg2   types.U128
 	Arg3   PayoutReason
 	Topics []types.Hash
+}
+
+type EventLotteryMessageReceived struct {
+	Phase    types.Phase
+	Sequence types.U64
+	Topics   []types.Hash
 }
 
 // pallet mining-staking
