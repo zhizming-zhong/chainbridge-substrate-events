@@ -154,127 +154,127 @@ type EventProposalFailed struct {
 // pallet bridge-transfer
 type EventFeeUpdated struct {
 	Phase    types.Phase
-	chainId  types.U8
-	minFee   types.U128
-	feeScale types.U32
+	ChainID  types.U8
+	MinFee   types.U128
+	FeeScale types.U32
 	Topics   []types.Hash
 }
 
 // pallet phala: registry
 type EventGatekeeperAdded struct {
 	Phase  types.Phase
-	worker types.Bytes
+	Worker types.Bytes
 	Topics []types.Hash
 }
 
 // pallet phala: mining
 type EventCoplingDownExpireChanged struct {
 	Phase  types.Phase
-	period types.U64
+	Period types.U64
 	Topics []types.Hash
 }
 
 type EventMiningStarted struct {
 	Phase  types.Phase
-	miner  types.AccountID
+	Miner  types.AccountID
 	Topics []types.Hash
 }
 
 type EventMiningStoped struct {
 	Phase  types.Phase
-	miner  types.AccountID
+	Miner  types.AccountID
 	Topics []types.Hash
 }
 
 type EventMiningCleanup struct {
 	Phase  types.Phase
-	user   types.AccountID
+	User   types.AccountID
 	Topics []types.Hash
 }
 
 type EventMinerBounded struct {
 	Phase  types.Phase
-	miner  types.AccountID
-	worker types.Bytes
+	Miner  types.AccountID
+	Worker types.Bytes
 	Topics []types.Hash
 }
 
 type EventMinerEnterUnresponsive struct {
 	Phase  types.Phase
-	miner  types.AccountID
+	Miner  types.AccountID
 	Topics []types.Hash
 }
 
 type EventMinerExitUnresponive struct {
 	Phase  types.Phase
-	miner  types.AccountID
+	Miner  types.AccountID
 	Topics []types.Hash
 }
 
 type EventMinerDeposited struct {
 	Phase  types.Phase
-	miner  types.AccountID
-	amount types.U128
+	Miner  types.AccountID
+	Amount types.U128
 	Topics []types.Hash
 }
 
 type EventMinerWithdrawed struct {
 	Phase  types.Phase
-	miner  types.AccountID
-	amount types.U128
+	Miner  types.AccountID
+	Amount types.U128
 	Topics []types.Hash
 }
 
 // pallet phala: stakepool
 type EventPoolCreated struct {
 	Phase  types.Phase
-	owner  types.AccountID
-	pid    types.U64
+	Owner  types.AccountID
+	Pid    types.U64
 	Topics []types.Hash
 }
 
 type EventPoolCommissionSetted struct {
 	Phase      types.Phase
-	pid        types.U64
-	commission types.U64
+	Pid        types.U64
+	Commission types.U64
 	Topics     []types.Hash
 }
 
 type EventPoolCapacitySetted struct {
 	Phase  types.Phase
-	pid    types.U64
-	cap    types.U128
+	Pid    types.U64
+	Cap    types.U128
 	Topics []types.Hash
 }
 
 type EventPoolWorkerAdded struct {
 	Phase  types.Phase
-	pid    types.U64
-	worker types.Bytes
+	Pid    types.U64
+	Worker types.Bytes
 	Topics []types.Hash
 }
 
 type EventDeposit struct {
 	Phase  types.Phase
-	pid    types.U64
-	user   types.AccountID
-	amount types.U128
+	Pid    types.U64
+	User   types.AccountID
+	Amount types.U128
 	Topics []types.Hash
 }
 
 type EventWithdraw struct {
 	Phase  types.Phase
-	pid    types.U64
-	user   types.AccountID
-	amount types.U128
+	Pid    types.U64
+	User   types.AccountID
+	Amount types.U128
 	Topics []types.Hash
 }
 
 type EventWithdrawRewards struct {
 	Phase  types.Phase
-	pid    types.U64
-	user   types.AccountID
-	amount types.U128
+	Pid    types.U64
+	User   types.AccountID
+	Amount types.U128
 	Topics []types.Hash
 }
 
