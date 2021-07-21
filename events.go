@@ -21,8 +21,7 @@ type ChainBridgeEvents struct {
 }
 
 type BridgeTransferEvents struct {
-	BridgeTransfer_LotteryNewRound []EventLotteryNewRound //nolint:stylecheck,golint
-	BridgeTransfer_LotteryOpenBox  []EventLotteryOpenBox  //nolint:stylecheck,golint
+	BridgeTransfer_FeeUpdated []EventFeeUpdated //nolint:stylecheck,golint
 }
 
 type PhalaEvents struct {
@@ -153,20 +152,12 @@ type EventProposalFailed struct {
 }
 
 // pallet bridge-transfer
-type EventLotteryNewRound struct {
-	Phase       types.Phase
-	RoundID     types.U32
-	TotalCount  types.U32
-	WinnerCount types.U32
-	Topics      []types.Hash
-}
-
-type EventLotteryOpenBox struct {
-	Phase      types.Phase
-	RoundID    types.U32
-	TokenId    types.U32
-	BtcAddress types.Bytes
-	Topics     []types.Hash
+type EventFeeUpdated struct {
+	Phase    types.Phase
+	chainId  types.U8
+	minFee   types.U128
+	feeScale types.U32
+	Topics   []types.Hash
 }
 
 // pallet phala: registry
