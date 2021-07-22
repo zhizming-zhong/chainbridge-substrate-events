@@ -24,8 +24,12 @@ type BridgeTransferEvents struct {
 	BridgeTransfer_FeeUpdated []EventFeeUpdated //nolint:stylecheck,golint
 }
 
-type PhalaEvents struct {
-	Phala_EventGatekeeperAdded          []EventGatekeeperAdded          //nolint:stylecheck,golint
+type PhalaGateKeeperEvents struct {
+	Phala_EventGatekeeperAdded []EventGatekeeperAdded //nolint:stylecheck,golint
+}
+
+type PhalaMiningEvents struct {
+	Phala_EventMeh                      []EventMiningMeh                //nolint:stylecheck,golint
 	Phala_EventCoplingDownExpireChanged []EventCoplingDownExpireChanged //nolint:stylecheck,golint
 	Phala_EventMiningStarted            []EventMiningStarted            //nolint:stylecheck,golint
 	Phala_EventMiningStoped             []EventMiningStoped             //nolint:stylecheck,golint
@@ -35,13 +39,17 @@ type PhalaEvents struct {
 	Phala_EventMinerExitUnresponive     []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
 	Phala_EventMinerDeposited           []EventMinerDeposited           //nolint:stylecheck,golint
 	Phala_EventMinerWithdrawed          []EventMinerWithdrawed          //nolint:stylecheck,golint
-	Phala_EventPoolCreated              []EventPoolCreated              //nolint:stylecheck,golint
-	Phala_EventPoolCommissionSetted     []EventPoolCommissionSetted     //nolint:stylecheck,golint
-	Phala_EventPoolCapacitySetted       []EventPoolCapacitySetted       //nolint:stylecheck,golint
-	Phala_EventPoolWorkerAdded          []EventPoolWorkerAdded          //nolint:stylecheck,golint
-	Phala_EventDeposit                  []EventDeposit                  //nolint:stylecheck,golint
-	Phala_EventWithdraw                 []EventWithdraw                 //nolint:stylecheck,golint
-	Phala_EventWithdrawRewards          []EventWithdrawRewards          //nolint:stylecheck,golint
+}
+
+type PhalaStakepoolEvents struct {
+	Phala_EventMeh                  []EventStakePoolMeh         //nolint:stylecheck,golint
+	Phala_EventPoolCreated          []EventPoolCreated          //nolint:stylecheck,golint
+	Phala_EventPoolCommissionSetted []EventPoolCommissionSetted //nolint:stylecheck,golint
+	Phala_EventPoolCapacitySet      []EventPoolCapacitySet      //nolint:stylecheck,golint
+	Phala_EventPoolWorkerAdded      []EventPoolWorkerAdded      //nolint:stylecheck,golint
+	Phala_EventDeposit              []EventDeposit              //nolint:stylecheck,golint
+	Phala_EventWithdraw             []EventWithdraw             //nolint:stylecheck,golint
+	Phala_EventWithdrawRewards      []EventWithdrawRewards      //nolint:stylecheck,golint
 }
 
 type KittiesEvents struct {
@@ -168,6 +176,12 @@ type EventGatekeeperAdded struct {
 }
 
 // pallet phala: mining
+type EventMiningMeh struct {
+	Phase  types.Phase
+	Meh    types.U32
+	Topics []types.Hash
+}
+
 type EventCoplingDownExpireChanged struct {
 	Phase  types.Phase
 	Period types.U64
@@ -226,6 +240,12 @@ type EventMinerWithdrawed struct {
 }
 
 // pallet phala: stakepool
+type EventStakePoolMeh struct {
+	Phase  types.Phase
+	Meh    types.U32
+	Topics []types.Hash
+}
+
 type EventPoolCreated struct {
 	Phase  types.Phase
 	Owner  types.AccountID
@@ -236,11 +256,11 @@ type EventPoolCreated struct {
 type EventPoolCommissionSetted struct {
 	Phase      types.Phase
 	Pid        types.U64
-	Commission types.U64
+	Commission types.U16
 	Topics     []types.Hash
 }
 
-type EventPoolCapacitySetted struct {
+type EventPoolCapacitySet struct {
 	Phase  types.Phase
 	Pid    types.U64
 	Cap    types.U128
