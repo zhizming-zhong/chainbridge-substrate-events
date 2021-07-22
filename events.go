@@ -25,31 +25,31 @@ type BridgeTransferEvents struct {
 }
 
 type PhalaGateKeeperEvents struct {
-	Phala_EventGatekeeperAdded []EventGatekeeperAdded //nolint:stylecheck,golint
+	PhalaRegistry_GatekeeperAdded []EventGatekeeperAdded //nolint:stylecheck,golint
 }
 
 type PhalaMiningEvents struct {
-	Phala_EventMeh                      []EventMiningMeh                //nolint:stylecheck,golint
-	Phala_EventCoplingDownExpireChanged []EventCoplingDownExpireChanged //nolint:stylecheck,golint
-	Phala_EventMiningStarted            []EventMiningStarted            //nolint:stylecheck,golint
-	Phala_EventMiningStoped             []EventMiningStoped             //nolint:stylecheck,golint
-	Phala_EventMiningCleanup            []EventMiningCleanup            //nolint:stylecheck,golint
-	Phala_EventMinerBounded             []EventMinerBounded             //nolint:stylecheck,golint
-	Phala_EventMinerEnterUnresponsive   []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
-	Phala_EventMinerExitUnresponive     []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
-	Phala_EventMinerDeposited           []EventMinerDeposited           //nolint:stylecheck,golint
-	Phala_EventMinerWithdrawed          []EventMinerWithdrawed          //nolint:stylecheck,golint
+	PhalaMining_Meh                      []EventMiningMeh                //nolint:stylecheck,golint
+	PhalaMining_CoplingDownExpireChanged []EventCoplingDownExpireChanged //nolint:stylecheck,golint
+	PhalaMining_MiningStarted            []EventMiningStarted            //nolint:stylecheck,golint
+	PhalaMining_MiningStoped             []EventMiningStoped             //nolint:stylecheck,golint
+	PhalaMining_MiningCleanup            []EventMiningCleanup            //nolint:stylecheck,golint
+	PhalaMining_MinerBounded             []EventMinerBounded             //nolint:stylecheck,golint
+	PhalaMining_MinerEnterUnresponsive   []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
+	PhalaMining_MinerExitUnresponive     []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
+	PhalaMining_MinerDeposited           []EventMinerDeposited           //nolint:stylecheck,golint
+	PhalaMining_MinerWithdrawed          []EventMinerWithdrawed          //nolint:stylecheck,golint
 }
 
 type PhalaStakepoolEvents struct {
-	Phala_EventMeh                  []EventStakePoolMeh         //nolint:stylecheck,golint
-	Phala_EventPoolCreated          []EventPoolCreated          //nolint:stylecheck,golint
-	Phala_EventPoolCommissionSetted []EventPoolCommissionSetted //nolint:stylecheck,golint
-	Phala_EventPoolCapacitySet      []EventPoolCapacitySet      //nolint:stylecheck,golint
-	Phala_EventPoolWorkerAdded      []EventPoolWorkerAdded      //nolint:stylecheck,golint
-	Phala_EventDeposit              []EventDeposit              //nolint:stylecheck,golint
-	Phala_EventWithdraw             []EventWithdraw             //nolint:stylecheck,golint
-	Phala_EventWithdrawRewards      []EventWithdrawRewards      //nolint:stylecheck,golint
+	PhalaStakePool_Meh                  []EventStakePoolMeh         //nolint:stylecheck,golint
+	PhalaStakePool_PoolCreated          []EventPoolCreated          //nolint:stylecheck,golint
+	PhalaStakePool_PoolCommissionSetted []EventPoolCommissionSetted //nolint:stylecheck,golint
+	PhalaStakePool_PoolCapacitySet      []EventPoolCapacitySet      //nolint:stylecheck,golint
+	PhalaStakePool_PoolWorkerAdded      []EventPoolWorkerAdded      //nolint:stylecheck,golint
+	PhalaStakePool_Deposit              []EventDeposit              //nolint:stylecheck,golint
+	PhalaStakePool_Withdraw             []EventWithdraw             //nolint:stylecheck,golint
+	PhalaStakePool_WithdrawRewards      []EventWithdrawRewards      //nolint:stylecheck,golint
 }
 
 type KittiesEvents struct {
