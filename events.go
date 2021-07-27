@@ -233,15 +233,14 @@ type EventPoolCreated struct {
 }
 
 type Permill struct {
-	Value types.U32
 }
 
 func (d *Permill) Decode(decoder scale.Decoder) error {
-	return decoder.Decode(&d.Value)
+	return nil
 }
 
 func (d Permill) Encode(encoder scale.Encoder) error {
-	return encoder.Encode(&d.Value)
+	return nil
 }
 
 type EventPoolCommissionSet struct {
