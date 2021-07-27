@@ -236,10 +236,18 @@ type Permill struct {
 }
 
 func (d *Permill) Decode(decoder scale.Decoder) error {
+	decoder.ReadOneByte()
+	decoder.ReadOneByte()
+	decoder.ReadOneByte()
+	decoder.ReadOneByte()
 	return nil
 }
 
 func (d Permill) Encode(encoder scale.Encoder) error {
+	encoder.PushByte(0)
+	encoder.PushByte(0)
+	encoder.PushByte(0)
+	encoder.PushByte(0)
 	return nil
 }
 
