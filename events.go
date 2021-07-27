@@ -1,6 +1,7 @@
 package events
 
 import (
+	"github.com/Phala-Network/go-substrate-rpc-client/v3/scale"
 	"github.com/Phala-Network/go-substrate-rpc-client/v3/types"
 )
 
@@ -231,10 +232,22 @@ type EventPoolCreated struct {
 	Topics []types.Hash
 }
 
+type Permill struct {
+	Value types.U32
+}
+
+func (d *Permill) Decode(decoder scale.Decoder) error {
+	return decoder.Decode(&d.Value)
+}
+
+func (d Permill) Encode(encoder scale.Encoder) error {
+	return encoder.Encode(&d.Value)
+}
+
 type EventPoolCommissionSet struct {
 	Phase      types.Phase
 	Pid        types.U64
-	Commission types.U32
+	Commission Permill
 	Topics     []types.Hash
 }
 
