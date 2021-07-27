@@ -29,27 +29,24 @@ type PhalaGateKeeperEvents struct {
 }
 
 type PhalaMiningEvents struct {
-	PhalaMining_Meh                      []EventMiningMeh                //nolint:stylecheck,golint
-	PhalaMining_CoplingDownExpireChanged []EventCoplingDownExpireChanged //nolint:stylecheck,golint
-	PhalaMining_MiningStarted            []EventMiningStarted            //nolint:stylecheck,golint
-	PhalaMining_MiningStoped             []EventMiningStoped             //nolint:stylecheck,golint
-	PhalaMining_MiningCleanup            []EventMiningCleanup            //nolint:stylecheck,golint
-	PhalaMining_MinerBounded             []EventMinerBounded             //nolint:stylecheck,golint
-	PhalaMining_MinerEnterUnresponsive   []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
-	PhalaMining_MinerExitUnresponive     []EventMinerEnterUnresponsive   //nolint:stylecheck,golint
-	PhalaMining_MinerDeposited           []EventMinerDeposited           //nolint:stylecheck,golint
-	PhalaMining_MinerWithdrawed          []EventMinerWithdrawed          //nolint:stylecheck,golint
+	PhalaMining_CoolDownExpirationChanged []EventCoolDownExpirationChanged //nolint:stylecheck,golint
+	PhalaMining_MinerStarted              []EventMinerStarted              //nolint:stylecheck,golint
+	PhalaMining_MinerStopped              []EventMinerStopped              //nolint:stylecheck,golint
+	PhalaMining_MinerReclaimed            []EventMinerReclaimed            //nolint:stylecheck,golint
+	PhalaMining_MinerBound                []EventMinerBound                //nolint:stylecheck,golint
+	PhalaMining_MinerUnbound              []EventMinerUnbound              //nolint:stylecheck,golint
+	PhalaMining_MinerEnterUnresponsive    []EventMinerEnterUnresponsive    //nolint:stylecheck,golint
+	PhalaMining_MinerExitUnresponive      []EventMinerEnterUnresponsive    //nolint:stylecheck,golint
 }
 
 type PhalaStakepoolEvents struct {
-	PhalaStakePool_Meh                  []EventStakePoolMeh         //nolint:stylecheck,golint
-	PhalaStakePool_PoolCreated          []EventPoolCreated          //nolint:stylecheck,golint
-	PhalaStakePool_PoolCommissionSetted []EventPoolCommissionSetted //nolint:stylecheck,golint
-	PhalaStakePool_PoolCapacitySet      []EventPoolCapacitySet      //nolint:stylecheck,golint
-	PhalaStakePool_PoolWorkerAdded      []EventPoolWorkerAdded      //nolint:stylecheck,golint
-	PhalaStakePool_Deposit              []EventDeposit              //nolint:stylecheck,golint
-	PhalaStakePool_Withdraw             []EventWithdraw             //nolint:stylecheck,golint
-	PhalaStakePool_WithdrawRewards      []EventWithdrawRewards      //nolint:stylecheck,golint
+	PhalaStakePool_PoolCreated       []EventPoolCreated      //nolint:stylecheck,golint
+	PhalaStakePool_PoolCommissionSet []EventPoolCapacitySet  //nolint:stylecheck,golint
+	PhalaStakePool_PoolCapacitySet   []EventPoolCapacitySet  //nolint:stylecheck,golint
+	PhalaStakePool_PoolWorkerAdded   []EventPoolWorkerAdded  //nolint:stylecheck,golint
+	PhalaStakePool_Contribution      []EventContribution     //nolint:stylecheck,golint
+	PhalaStakePool_Withdrawal        []EventWithdrawal       //nolint:stylecheck,golint
+	PhalaStakePool_RewardsWithdrawn  []EventRewardsWithdrawn //nolint:stylecheck,golint
 }
 
 type KittiesEvents struct {
@@ -176,37 +173,38 @@ type EventGatekeeperAdded struct {
 }
 
 // pallet phala: mining
-type EventMiningMeh struct {
-	Phase  types.Phase
-	Meh    types.U32
-	Topics []types.Hash
-}
-
-type EventCoplingDownExpireChanged struct {
+type EventCoolDownExpirationChanged struct {
 	Phase  types.Phase
 	Period types.U64
 	Topics []types.Hash
 }
 
-type EventMiningStarted struct {
+type EventMinerStarted struct {
 	Phase  types.Phase
 	Miner  types.AccountID
 	Topics []types.Hash
 }
 
-type EventMiningStoped struct {
+type EventMinerStopped struct {
 	Phase  types.Phase
 	Miner  types.AccountID
 	Topics []types.Hash
 }
 
-type EventMiningCleanup struct {
+type EventMinerReclaimed struct {
 	Phase  types.Phase
 	User   types.AccountID
 	Topics []types.Hash
 }
 
-type EventMinerBounded struct {
+type EventMinerBound struct {
+	Phase  types.Phase
+	Miner  types.AccountID
+	Worker types.Bytes
+	Topics []types.Hash
+}
+
+type EventMinerUnbound struct {
 	Phase  types.Phase
 	Miner  types.AccountID
 	Worker types.Bytes
@@ -225,27 +223,7 @@ type EventMinerExitUnresponive struct {
 	Topics []types.Hash
 }
 
-type EventMinerDeposited struct {
-	Phase  types.Phase
-	Miner  types.AccountID
-	Amount types.U128
-	Topics []types.Hash
-}
-
-type EventMinerWithdrawed struct {
-	Phase  types.Phase
-	Miner  types.AccountID
-	Amount types.U128
-	Topics []types.Hash
-}
-
 // pallet phala: stakepool
-type EventStakePoolMeh struct {
-	Phase  types.Phase
-	Meh    types.U32
-	Topics []types.Hash
-}
-
 type EventPoolCreated struct {
 	Phase  types.Phase
 	Owner  types.AccountID
@@ -253,10 +231,10 @@ type EventPoolCreated struct {
 	Topics []types.Hash
 }
 
-type EventPoolCommissionSetted struct {
+type EventPoolCommissionSet struct {
 	Phase      types.Phase
 	Pid        types.U64
-	Commission types.U16
+	Commission types.U32
 	Topics     []types.Hash
 }
 
@@ -274,7 +252,7 @@ type EventPoolWorkerAdded struct {
 	Topics []types.Hash
 }
 
-type EventDeposit struct {
+type EventContribution struct {
 	Phase  types.Phase
 	Pid    types.U64
 	User   types.AccountID
@@ -282,7 +260,7 @@ type EventDeposit struct {
 	Topics []types.Hash
 }
 
-type EventWithdraw struct {
+type EventWithdrawal struct {
 	Phase  types.Phase
 	Pid    types.U64
 	User   types.AccountID
@@ -290,7 +268,7 @@ type EventWithdraw struct {
 	Topics []types.Hash
 }
 
-type EventWithdrawRewards struct {
+type EventRewardsWithdrawn struct {
 	Phase  types.Phase
 	Pid    types.U64
 	User   types.AccountID
