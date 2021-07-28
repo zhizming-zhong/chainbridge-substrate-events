@@ -233,6 +233,7 @@ type EventPoolCreated struct {
 }
 
 type Permill struct {
+	Value types.U32
 }
 
 func (d *Permill) Decode(decoder scale.Decoder) error {
