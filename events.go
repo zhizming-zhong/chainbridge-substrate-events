@@ -239,13 +239,13 @@ type Permill struct {
 }
 
 func (d *Permill) Decode(decoder scale.Decoder) error {
-	value := PermillValue(0)
-	decoder.Decode(&value)
-	return nil
+	// we do not care about the value
+	_, err := decoder.DecodeUintCompact()
+	return err
 }
 
 func (d Permill) Encode(encoder scale.Encoder) error {
-	encoder.Encode(d.Value)
+	// no need handle encode here, ingore
 	return nil
 }
 
