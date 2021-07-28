@@ -232,23 +232,20 @@ type EventPoolCreated struct {
 	Topics []types.Hash
 }
 
+type PermillValue types.U32
+
 type Permill struct {
-	Value types.U32
+	Value PermillValue
 }
 
 func (d *Permill) Decode(decoder scale.Decoder) error {
-	decoder.ReadOneByte()
-	decoder.ReadOneByte()
-	decoder.ReadOneByte()
-	decoder.ReadOneByte()
+	value := PermillValue(0)
+	decoder.Decode(&value)
 	return nil
 }
 
 func (d Permill) Encode(encoder scale.Encoder) error {
-	encoder.PushByte(0)
-	encoder.PushByte(0)
-	encoder.PushByte(0)
-	encoder.PushByte(0)
+	encoder.Encode(d.Value)
 	return nil
 }
 
