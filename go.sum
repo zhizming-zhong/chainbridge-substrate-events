@@ -69,6 +69,8 @@ github.com/Phala-Network/go-substrate-rpc-client/v3 v3.0.1-0.20210803022229-9d9a
 github.com/Phala-Network/go-substrate-rpc-client/v3 v3.0.1-0.20210803022229-9d9abd300eba/go.mod h1:+e4sog3+Azc8sH/ELGVcY8Cz0viGxzNZuqAV6LWhFKE=
 github.com/Phala-Network/go-substrate-rpc-client/v3 v3.0.1-0.20210803035701-971fc2c4c6f8 h1:oQVKP52UzcZnDGEiZnAB6qn39qVkpFLSIEAMyDRPeBI=
 github.com/Phala-Network/go-substrate-rpc-client/v3 v3.0.1-0.20210803035701-971fc2c4c6f8/go.mod h1:+e4sog3+Azc8sH/ELGVcY8Cz0viGxzNZuqAV6LWhFKE=
+github.com/Phala-Network/go-substrate-rpc-client/v3 v3.0.1-0.20210803071621-5eeb3f3f62ac h1:B0GvVgjkYLlfhV/wWpqLuzEugN76HXMfc5JJZgJ5Q3M=
+github.com/Phala-Network/go-substrate-rpc-client/v3 v3.0.1-0.20210803071621-5eeb3f3f62ac/go.mod h1:+e4sog3+Azc8sH/ELGVcY8Cz0viGxzNZuqAV6LWhFKE=
 github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6/go.mod h1:3eOhrUMpNV+6aFIbp5/iudMxNCF27Vw2OZgy4xEx0Fg=
 github.com/VictoriaMetrics/fastcache v1.5.3/go.mod h1:+jv9Ckb+za/P1ZRg/sulP5Ni1v49daAVERr0H3CuscE=
 github.com/VictoriaMetrics/fastcache v1.5.7/go.mod h1:ptDBkNMQI4RtmVo8VS/XwRY6RoTu1dAWCbrk+6WsEM8=
