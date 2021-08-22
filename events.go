@@ -29,24 +29,30 @@ type PhalaGateKeeperEvents struct {
 }
 
 type PhalaMiningEvents struct {
-	PhalaMining_CoolDownExpirationChanged []EventCoolDownExpirationChanged //nolint:stylecheck,golint
-	PhalaMining_MinerStarted              []EventMinerStarted              //nolint:stylecheck,golint
-	PhalaMining_MinerStopped              []EventMinerStopped              //nolint:stylecheck,golint
-	PhalaMining_MinerReclaimed            []EventMinerReclaimed            //nolint:stylecheck,golint
-	PhalaMining_MinerBound                []EventMinerBound                //nolint:stylecheck,golint
-	PhalaMining_MinerUnbound              []EventMinerUnbound              //nolint:stylecheck,golint
-	PhalaMining_MinerEnterUnresponsive    []EventMinerEnterUnresponsive    //nolint:stylecheck,golint
-	PhalaMining_MinerExitUnresponive      []EventMinerExitUnresponive      //nolint:stylecheck,golint
+	PhalaMining_CoolDownExpirationChanged      []EventCoolDownExpirationChanged      //nolint:stylecheck,golint
+	PhalaMining_MinerStarted                   []EventMinerStarted                   //nolint:stylecheck,golint
+	PhalaMining_MinerStopped                   []EventMinerStopped                   //nolint:stylecheck,golint
+	PhalaMining_MinerReclaimed                 []EventMinerReclaimed                 //nolint:stylecheck,golint
+	PhalaMining_MinerBound                     []EventMinerBound                     //nolint:stylecheck,golint
+	PhalaMining_MinerUnbound                   []EventMinerUnbound                   //nolint:stylecheck,golint
+	PhalaMining_MinerEnterUnresponsive         []EventMinerEnterUnresponsive         //nolint:stylecheck,golint
+	PhalaMining_MinerExitUnresponive           []EventMinerExitUnresponive           //nolint:stylecheck,golint
+	PhalaMining_MinerSettled                   []EventMinerSettled                   //nolint:stylecheck,golint
+	PhalaMining_InternalErrorMinerSettleFailed []EventInternalErrorMinerSettleFailed //nolint:stylecheck,golint
 }
 
 type PhalaStakepoolEvents struct {
-	PhalaStakePool_PoolCreated       []EventPoolCreated       //nolint:stylecheck,golint
-	PhalaStakePool_PoolCommissionSet []EventPoolCommissionSet //nolint:stylecheck,golint
-	PhalaStakePool_PoolCapacitySet   []EventPoolCapacitySet   //nolint:stylecheck,golint
-	PhalaStakePool_PoolWorkerAdded   []EventPoolWorkerAdded   //nolint:stylecheck,golint
-	PhalaStakePool_Contribution      []EventContribution      //nolint:stylecheck,golint
-	PhalaStakePool_Withdrawal        []EventWithdrawal        //nolint:stylecheck,golint
-	PhalaStakePool_RewardsWithdrawn  []EventRewardsWithdrawn  //nolint:stylecheck,golint
+	PhalaStakePool_PoolCreated              []EventPoolCreated              //nolint:stylecheck,golint
+	PhalaStakePool_PoolCommissionSet        []EventPoolCommissionSet        //nolint:stylecheck,golint
+	PhalaStakePool_PoolCapacitySet          []EventPoolCapacitySet          //nolint:stylecheck,golint
+	PhalaStakePool_PoolWorkerAdded          []EventPoolWorkerAdded          //nolint:stylecheck,golint
+	PhalaStakePool_Contribution             []EventContribution             //nolint:stylecheck,golint
+	PhalaStakePool_Withdrawal               []EventWithdrawal               //nolint:stylecheck,golint
+	PhalaStakePool_RewardsWithdrawn         []EventRewardsWithdrawn         //nolint:stylecheck,golint
+	PhalaStakePool_PoolSlashed              []EventPoolSlashed              //nolint:stylecheck,golint
+	PhalaStakePool_SlashSettled             []EventSlashSettled             //nolint:stylecheck,golint
+	PhalaStakePool_RewardDismissedNotInPool []EventRewardDismissedNotInPool //nolint:stylecheck,golint
+	PhalaStakePool_RewardDismissedNoShare   []EventRewardDismissedNoShare   //nolint:stylecheck,golint
 }
 
 type KittiesEvents struct {
@@ -192,9 +198,11 @@ type EventMinerStopped struct {
 }
 
 type EventMinerReclaimed struct {
-	Phase  types.Phase
-	User   types.AccountID
-	Topics []types.Hash
+	Phase   types.Phase
+	User    types.AccountID
+	Origin  types.U128
+	Slashed types.U128
+	Topics  []types.Hash
 }
 
 type EventMinerBound struct {
@@ -220,6 +228,20 @@ type EventMinerEnterUnresponsive struct {
 type EventMinerExitUnresponive struct {
 	Phase  types.Phase
 	Miner  types.AccountID
+	Topics []types.Hash
+}
+
+type EventMinerSettled struct {
+	Phase  types.Phase
+	User   types.AccountID
+	V      types.U128
+	Payout types.U128
+	Topics []types.Hash
+}
+
+type EventInternalErrorMinerSettleFailed struct {
+	Phase  types.Phase
+	Worker types.Bytes
 	Topics []types.Hash
 }
 
@@ -272,6 +294,35 @@ type EventRewardsWithdrawn struct {
 	Phase  types.Phase
 	Pid    types.U64
 	User   types.AccountID
+	Amount types.U128
+	Topics []types.Hash
+}
+
+type EventPoolSlashed struct {
+	Phase  types.Phase
+	Pid    types.U64
+	Amount types.U128
+	Topics []types.Hash
+}
+
+type EventSlashSettled struct {
+	Phase  types.Phase
+	Pid    types.U64
+	User   types.AccountID
+	Amount types.U128
+	Topics []types.Hash
+}
+
+type EventRewardDismissedNotInPool struct {
+	Phase  types.Phase
+	Worker types.Bytes
+	Amount types.U128
+	Topics []types.Hash
+}
+
+type EventRewardDismissedNoShare struct {
+	Phase  types.Phase
+	Pid    types.U64
 	Amount types.U128
 	Topics []types.Hash
 }
