@@ -69,7 +69,7 @@ type EventFungibleTransfer struct {
 	Destination  types.U8
 	DepositNonce types.U64
 	ResourceId   types.Bytes32
-	Amount       types.U256
+	Amount       types.U128
 	Recipient    types.Bytes
 	Topics       []types.Hash
 }
